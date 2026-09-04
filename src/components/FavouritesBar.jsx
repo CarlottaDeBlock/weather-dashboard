@@ -1,51 +1,69 @@
 import { useSettings, favouriteKey } from '../context/SettingsContext.jsx';
 import { formatLocationName } from '../lib/format.js';
 
-/** Horizontal list of saved cities; clicking one loads its weather. */
+/** Grid of saved cities rendered as cards; clicking one loads its weather. */
 export function FavouritesBar({ selectedPlace, onSelect }) {
   const { favourites, removeFavourite } = useSettings();
 
-  if (!favourites.length) {
-    return (
-      <p className="text-sm text-slate-500 dark:text-slate-400">
-        No favourites yet — search for a city and tap the star to save it.
-      </p>
-    );
-  }
-
   return (
-    <ul className="flex flex-wrap gap-2" aria-label="Favourite cities">
-      {favourites.map((place) => {
-        const active = selectedPlace && favouriteKey(selectedPlace) === favouriteKey(place);
-        return (
-          <li key={favouriteKey(place)}>
-            <div
-              className={`flex items-center gap-1 rounded-full border px-1 py-0.5 text-sm transition ${
-                active
-                  ? 'border-sky-400 bg-sky-50 dark:bg-sky-950/40'
-                  : 'border-slate-300 bg-white dark:border-slate-700 dark:bg-slate-900'
-              }`}
-            >
-              <button
-                type="button"
-                onClick={() => onSelect(place)}
-                className="rounded-full px-2 py-1"
-                title={formatLocationName(place)}
-              >
-                {place.name}
-              </button>
-              <button
-                type="button"
-                onClick={() => removeFavourite(place)}
-                aria-label={`Remove ${place.name} from favourites`}
-                className="rounded-full px-1.5 text-slate-400 hover:text-red-500"
-              >
-                ×
-              </button>
-            </div>
-          </li>
-        );
-      })}
-    </ul>
+    <section aria-label="Favourite cities" className="space-y-2">
+      <h2 className="flex items-center gap-1.5 text-sm font-semibold uppercase tracking-wide text-slate-500 dark:text-slate-400">
+        <span className="text-amber-500" aria-hidden="true">
+          ★
+        </span>
+        Favourites
+      </h2>
+
+      {favourites.length === 0 ? (
+        <p className="rounded-xl border border-dashed border-slate-300 px-3 py-3 text-sm text-slate-500 dark:border-slate-700 dark:text-slate-400">
+          No favourite cities yet — search above and tap the star to save one.
+        </p>
+      ) : (
+        <ul className="grid grid-cols-1 gap-2 sm:grid-cols-2 lg:grid-cols-3">
+          {favourites.map((place) => {
+            const active =
+              selectedPlace && favouriteKey(selectedPlace) === favouriteKey(place);
+            return (
+              <li key={favouriteKey(place)} className="group relative">
+                <button
+                  type="button"
+                  onClick={() => onSelect(place)}
+                  aria-current={active ? 'true' : undefined}
+                  className={`flex w-full items-center gap-3 rounded-xl border bg-white p-3 pr-9 text-left shadow-sm transition hover:shadow-md dark:bg-slate-900 ${
+                    active
+                      ? 'border-sky-400 ring-2 ring-sky-400/40'
+                      : 'border-slate-200 hover:border-slate-300 dark:border-slate-700 dark:hover:border-slate-600'
+                  }`}
+                >
+                  <span
+                    className={`text-lg ${active ? 'text-amber-500' : 'text-amber-400'}`}
+                    aria-hidden="true"
+                  >
+                    ★
+                  </span>
+                  <span className="min-w-0">
+                    <span className="block truncate font-semibold text-slate-900 dark:text-slate-50">
+                      {place.name}
+                    </span>
+                    <span className="block truncate text-xs text-slate-500 dark:text-slate-400">
+                      {[place.admin1, place.country].filter(Boolean).join(', ')}
+                    </span>
+                  </span>
+                </button>
+
+                <button
+                  type="button"
+                  onClick={() => removeFavourite(place)}
+                  aria-label={`Remove ${formatLocationName(place)} from favourites`}
+                  className="absolute right-2 top-1/2 -translate-y-1/2 rounded-full p-1 text-slate-400 opacity-100 transition hover:bg-slate-100 hover:text-red-500 focus-visible:opacity-100 dark:hover:bg-slate-800 sm:opacity-0 sm:group-hover:opacity-100"
+                >
+                  <span aria-hidden="true">✕</span>
+                </button>
+              </li>
+            );
+          })}
+        </ul>
+      )}
+    </section>
   );
 }
