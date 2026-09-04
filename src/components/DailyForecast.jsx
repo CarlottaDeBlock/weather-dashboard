@@ -2,7 +2,6 @@ import { useSettings } from '../context/SettingsContext.jsx';
 import { formatDay, formatTemperature } from '../lib/format.js';
 import { WeatherIcon } from './WeatherIcon.jsx';
 
-/** Short multi-day outlook. */
 export function DailyForecast({ daily, className = '' }) {
   const { unit } = useSettings();
   if (!daily?.length) return null;

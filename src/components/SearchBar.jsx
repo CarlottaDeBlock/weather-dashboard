@@ -2,10 +2,6 @@ import { useEffect, useId, useRef, useState } from 'react';
 import { useCitySearch } from '../hooks/useCitySearch.js';
 import { formatLocationName } from '../lib/format.js';
 
-/**
- * City search with a debounced autocomplete dropdown.
- * Calls `onSelect(place)` when the user picks a result.
- */
 export function SearchBar({ onSelect }) {
   const [query, setQuery] = useState('');
   const [open, setOpen] = useState(false);

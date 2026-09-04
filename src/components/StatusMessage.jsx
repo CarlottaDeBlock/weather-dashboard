@@ -1,5 +1,3 @@
-/** Shared presentational component for loading / error / empty states. */
-
 export function Spinner({ label = 'Loading' }) {
   return (
     <div

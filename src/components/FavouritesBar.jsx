@@ -1,7 +1,6 @@
 import { useSettings, favouriteKey } from '../context/SettingsContext.jsx';
 import { formatLocationName } from '../lib/format.js';
 
-/** Grid of saved cities rendered as cards; clicking one loads its weather. */
 export function FavouritesBar({ selectedPlace, onSelect }) {
   const { favourites, removeFavourite } = useSettings();
 

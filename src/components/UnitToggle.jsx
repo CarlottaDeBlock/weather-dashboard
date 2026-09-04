@@ -1,6 +1,5 @@
 import { useSettings } from '../context/SettingsContext.jsx';
 
-/** Segmented control to switch between Celsius and Fahrenheit. */
 export function UnitToggle() {
   const { unit, setUnit } = useSettings();
 

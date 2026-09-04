@@ -1,5 +1,4 @@
-// Thin API layer around the free, key-less Open-Meteo service.
-// https://open-meteo.com/  (geocoding + forecast)
+// API layer around Open-Meteo
 
 const GEO_URL = 'https://geocoding-api.open-meteo.com/v1/search';
 const FORECAST_URL = 'https://api.open-meteo.com/v1/forecast';
@@ -8,11 +7,10 @@ export class ApiError extends Error {
   constructor(message, { code } = {}) {
     super(message);
     this.name = 'ApiError';
-    this.code = code; // 'not_found' | 'network' | 'server'
+    this.code = code; 
   }
 }
 
-/** Search cities by name. Returns a list of place objects. */
 export async function searchCities(query, { count = 6, signal } = {}) {
   const trimmed = query.trim();
   if (!trimmed) return [];
@@ -21,7 +19,6 @@ export async function searchCities(query, { count = 6, signal } = {}) {
   return (data.results ?? []).map(normalisePlace);
 }
 
-/** Fetch current conditions + a short daily outlook for a coordinate. */
 export async function fetchWeather(place, { signal } = {}) {
   const params = new URLSearchParams({
     latitude: place.latitude,

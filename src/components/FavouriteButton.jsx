@@ -1,6 +1,5 @@
 import { useSettings } from '../context/SettingsContext.jsx';
 
-/** Star toggle that adds/removes the given place from favourites. */
 export function FavouriteButton({ place, variant = 'default' }) {
   const { isFavourite, toggleFavourite } = useSettings();
   const active = isFavourite(place);

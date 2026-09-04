@@ -1,7 +1,3 @@
-// Maps WMO weather interpretation codes (used by Open-Meteo) to a
-// human-readable label and an emoji icon. Day/night aware where it matters.
-// Reference: https://open-meteo.com/en/docs
-
 const CODES = {
   0: { label: 'Clear sky', day: '☀️', night: '🌙' },
   1: { label: 'Mainly clear', day: '🌤️', night: '🌙' },
