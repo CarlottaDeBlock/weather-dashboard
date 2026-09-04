@@ -31,17 +31,19 @@ export default function App() {
   }, []);
 
   return (
-    <div className="mx-auto flex min-h-screen max-w-4xl flex-col gap-6 px-4 py-6 sm:py-10">
+    <div className="mx-auto flex min-h-screen w-full max-w-[1700px] flex-col gap-6 px-4 py-6 sm:px-6 lg:px-10 lg:py-8">
       <Header />
 
-      <div className="flex flex-col gap-3">
-        <SearchBar onSelect={setSelectedPlace} />
-        <FavouritesBar selectedPlace={selectedPlace} onSelect={setSelectedPlace} />
-      </div>
+      <div className="flex flex-1 flex-col gap-6 lg:grid lg:grid-cols-[minmax(280px,340px)_1fr] lg:items-start">
+        <aside className="flex flex-col gap-4 lg:sticky lg:top-8">
+          <SearchBar onSelect={setSelectedPlace} />
+          <FavouritesBar selectedPlace={selectedPlace} onSelect={setSelectedPlace} />
+        </aside>
 
-      <main className="flex-1">
-        <WeatherPanel place={selectedPlace} />
-      </main>
+        <main className="min-w-0">
+          <WeatherPanel place={selectedPlace} />
+        </main>
+      </div>
 
       <footer className="pt-4 text-center text-xs text-slate-400">
         Data from{' '}

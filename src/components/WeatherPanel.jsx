@@ -42,9 +42,17 @@ export function WeatherPanel({ place }) {
           Refreshing…
         </p>
       )}
-      <CurrentWeather weather={data} />
-      <WeatherStatsGrid weather={data} />
-      <DailyForecast daily={data.daily} />
+      {/* On wide screens: hero + forecast stack on the left, the metrics
+          grid fills the right column. On narrow screens everything stacks
+          in priority order (current → metrics → forecast). */}
+      <div className="flex flex-col gap-6 xl:grid xl:grid-cols-[minmax(0,1.1fr)_minmax(0,1fr)] xl:items-start">
+        <CurrentWeather weather={data} className="xl:col-start-1 xl:row-start-1" />
+        <WeatherStatsGrid
+          weather={data}
+          className="xl:col-start-2 xl:row-start-1 xl:row-span-2"
+        />
+        <DailyForecast daily={data.daily} className="xl:col-start-1 xl:row-start-2" />
+      </div>
     </div>
   );
 }

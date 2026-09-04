@@ -3,12 +3,12 @@ import { formatDay, formatTemperature } from '../lib/format.js';
 import { WeatherIcon } from './WeatherIcon.jsx';
 
 /** Short multi-day outlook. */
-export function DailyForecast({ daily }) {
+export function DailyForecast({ daily, className = '' }) {
   const { unit } = useSettings();
   if (!daily?.length) return null;
 
   return (
-    <section aria-label="Multi-day forecast">
+    <section aria-label="Multi-day forecast" className={className}>
       <h3 className="mb-3 text-sm font-semibold uppercase tracking-wide text-slate-500 dark:text-slate-400">
         Next days
       </h3>

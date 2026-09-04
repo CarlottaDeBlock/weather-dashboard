@@ -8,7 +8,7 @@ import {
 import { WeatherStat } from './WeatherStat.jsx';
 
 /** Responsive grid of secondary weather metrics. */
-export function WeatherStatsGrid({ weather }) {
+export function WeatherStatsGrid({ weather, className = '' }) {
   const { unit } = useSettings();
   const { current, today, timezone } = weather;
 
@@ -41,7 +41,9 @@ export function WeatherStatsGrid({ weather }) {
   ];
 
   return (
-    <div className="grid grid-cols-2 gap-3 sm:grid-cols-3 lg:grid-cols-4">
+    <div
+      className={`grid h-full auto-rows-fr grid-cols-2 gap-3 sm:grid-cols-3 lg:grid-cols-4 xl:grid-cols-2 ${className}`}
+    >
       {stats.map((s) => (
         <WeatherStat key={s.label} {...s} />
       ))}

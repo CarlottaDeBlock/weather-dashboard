@@ -4,15 +4,14 @@ import { formatLocationName, formatTemperature, formatTime } from '../lib/format
 import { WeatherIcon } from './WeatherIcon.jsx';
 import { FavouriteButton } from './FavouriteButton.jsx';
 
-/** Hero card: place name, big temperature, condition, favourite toggle. */
-export function CurrentWeather({ weather }) {
+export function CurrentWeather({ weather, className = '' }) {
   const { unit } = useSettings();
   const { place, current, today, timezone } = weather;
   const { label } = describeWeather(current.weatherCode, current.isDay);
 
   return (
     <section
-      className="animate-fade-in rounded-2xl bg-gradient-to-br from-sky-500 to-indigo-600 p-6 text-white shadow-lg sm:p-8"
+      className={`animate-fade-in flex flex-col rounded-2xl bg-gradient-to-br from-sky-500 to-indigo-600 p-6 text-white shadow-lg sm:p-8 ${className}`}
       aria-label={`Current weather for ${place.name}`}
     >
       <div className="flex items-start justify-between gap-4">
@@ -34,7 +33,7 @@ export function CurrentWeather({ weather }) {
         <div className="text-lg text-white/90">{label}</div>
       </div>
 
-      <div className="mt-4 flex gap-4 text-sm text-white/80">
+      <div className="mt-6 flex flex-wrap gap-x-4 gap-y-1 text-sm text-white/80">
         <span>H: {formatTemperature(today.tempMax, unit)}</span>
         <span>L: {formatTemperature(today.tempMin, unit)}</span>
         <span>Feels like {formatTemperature(current.apparentTemperature, unit)}</span>

@@ -19,7 +19,7 @@ export function FavouritesBar({ selectedPlace, onSelect }) {
           No favourite cities yet — search above and tap the star to save one.
         </p>
       ) : (
-        <ul className="grid grid-cols-1 gap-2 sm:grid-cols-2 lg:grid-cols-3">
+        <ul className="grid grid-cols-1 gap-2 sm:grid-cols-2 lg:grid-cols-1">
           {favourites.map((place) => {
             const active =
               selectedPlace && favouriteKey(selectedPlace) === favouriteKey(place);
