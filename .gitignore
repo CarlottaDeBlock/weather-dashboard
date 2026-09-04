@@ -10,6 +10,7 @@ dist-ssr
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
+pnpm-debug.log*
 
-# use npm, not pnpm
-pnpm-lock.yaml
+# this project uses pnpm
+package-lock.json

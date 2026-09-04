@@ -28,18 +28,19 @@ API (geocoding + forecast). No backend, no API key, no sign-up.
 
 ## Getting started
 
-Requirements: **Node.js 18+** and npm.
+Requirements: **Node.js 18+** and **[pnpm](https://pnpm.io/installation)**
+(`npm install -g pnpm`, or `corepack enable`).
 
 ```bash
 # 1. Install dependencies
-npm install
+pnpm install
 
 # 2. Start the dev server (http://localhost:5173)
-npm run dev
+pnpm dev
 
 # 3. Production build + local preview
-npm run build
-npm run preview
+pnpm build
+pnpm preview
 ```
 
 ## Project structure

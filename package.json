@@ -4,6 +4,10 @@
   "version": "1.0.0",
   "type": "module",
   "description": "Frontend-only weather dashboard built with React, Vite and Tailwind CSS.",
+  "packageManager": "pnpm@10.17.1",
+  "engines": {
+    "node": ">=18"
+  },
   "scripts": {
     "dev": "vite",
     "build": "vite build",
