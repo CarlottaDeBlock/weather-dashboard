@@ -1,4 +1,6 @@
-export function Spinner({ label = 'Loading' }) {
+/** Presentational loading / error / empty states. All copy comes in as props. */
+
+export function Spinner({ label }) {
   return (
     <div
       className="flex flex-col items-center justify-center gap-3 py-16 text-slate-500 dark:text-slate-400"
@@ -9,12 +11,12 @@ export function Spinner({ label = 'Loading' }) {
         className="h-10 w-10 animate-spin rounded-full border-4 border-slate-300 border-t-sky-500 dark:border-slate-700 dark:border-t-sky-400"
         aria-hidden="true"
       />
-      <span className="text-sm">{label}…</span>
+      {label && <span className="text-sm">{label}…</span>}
     </div>
   );
 }
 
-export function ErrorState({ title = 'Something went wrong', message, onRetry }) {
+export function ErrorState({ title, message, retryLabel, onRetry }) {
   return (
     <div
       className="flex flex-col items-center gap-3 rounded-2xl border border-red-200 bg-red-50 px-6 py-12 text-center dark:border-red-900/50 dark:bg-red-950/40"
@@ -25,13 +27,13 @@ export function ErrorState({ title = 'Something went wrong', message, onRetry })
       </span>
       <h2 className="text-lg font-semibold text-red-800 dark:text-red-200">{title}</h2>
       {message && <p className="max-w-sm text-sm text-red-700 dark:text-red-300">{message}</p>}
-      {onRetry && (
+      {onRetry && retryLabel && (
         <button
           type="button"
           onClick={onRetry}
           className="mt-2 rounded-lg bg-red-600 px-4 py-2 text-sm font-medium text-white transition hover:bg-red-700 focus-visible:outline-red-600"
         >
-          Try again
+          {retryLabel}
         </button>
       )}
     </div>

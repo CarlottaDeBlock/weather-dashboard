@@ -1,10 +1,5 @@
 import { useCallback, useEffect, useState } from 'react';
 
-/**
- * State hook that mirrors its value into localStorage, so it survives
- * page refreshes. Reads/writes are wrapped in try/catch because storage
- * can be unavailable (private mode, disabled cookies, quota).
- */
 export function useLocalStorage(key, initialValue) {
   const [value, setValue] = useState(() => {
     try {
@@ -23,7 +18,6 @@ export function useLocalStorage(key, initialValue) {
     }
   }, [key, value]);
 
-  // Keep multiple tabs in sync.
   useEffect(() => {
     function onStorage(e) {
       if (e.key === key && e.newValue != null) {

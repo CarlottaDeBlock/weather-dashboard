@@ -17,9 +17,12 @@ API (geocoding + forecast). No backend, no API key, no sign-up.
 - **5-day outlook**.
 - **°C / °F toggle** — conversion is done client-side, so switching units never
   refetches.
+- **Multi-language UI** (English, Dutch, French, German) via `react-i18next`.
+  Weekday/time formatting and the city-search results follow the chosen
+  language too.
 - **Favourites** — add/remove cities, jump between them from the favourites bar.
-- **Persistence** via `localStorage` (unit, favourites, last city), synced across
-  tabs.
+- **Persistence** via `localStorage` (unit, language, favourites, last city),
+  synced across tabs.
 - **Loading & error states** — spinner while loading, friendly messages for
   "city not found", network failures and API errors, with a retry button.
 - **Responsive** layout (mobile → desktop) and **dark mode** (follows the OS).
@@ -52,18 +55,22 @@ component:
 src/
 ├── api/
 │   └── openMeteo.js          # API layer: geocoding + forecast, error normalisation
+├── i18n/
+│   ├── config.js             # i18next init, language list, <html lang> sync
+│   └── locales/              # en / nl / fr / de translation dictionaries
 ├── context/
 │   └── SettingsContext.jsx   # unit + favourites, persisted (shared app state)
 ├── hooks/
 │   ├── useLocalStorage.js    # state mirrored to localStorage (+ cross-tab sync)
 │   ├── useDebouncedValue.js  # generic debounce
-│   ├── useCitySearch.js      # debounced geocoding search with status states
+│   ├── useCitySearch.js      # debounced geocoding search (language-aware)
 │   └── useWeather.js         # loads weather for a place, exposes status + refresh
 ├── lib/
 │   ├── format.js             # pure formatting/unit-conversion helpers
-│   └── weatherCodes.js       # WMO weather-code → label + icon
+│   └── weatherCodes.js       # WMO weather-code → icon (labels live in i18n)
 ├── components/
-│   ├── Header.jsx            # title + UnitToggle
+│   ├── Header.jsx            # title + LanguageSwitcher + UnitToggle
+│   ├── LanguageSwitcher.jsx  # language dropdown
 │   ├── UnitToggle.jsx        # °C / °F segmented control
 │   ├── SearchBar.jsx         # combobox + autocomplete dropdown
 │   ├── FavouritesBar.jsx     # saved cities
@@ -88,8 +95,12 @@ src/
 - **Unit handling**: all data is fetched in metric units and converted in
   `lib/format.js`. The toggle is instant and offline-safe.
 - **State ownership**: `WeatherPanel` owns the fetch for the current place;
-  `SettingsContext` owns everything that must persist.
+  `SettingsContext` owns unit + favourites; `i18n` owns the language (persisted
+  by `i18next-browser-languagedetector`).
+- **i18n**: components read copy with the `useTranslation` hook; weather-code
+  labels are keyed by code in the dictionaries; API errors carry a `code` that
+  maps to a translated message.
 
 ## Tech
 
-React 18, Vite 5, Tailwind CSS 3, Open-Meteo API.
+React 18, Vite 5, Tailwind CSS 3, react-i18next, Open-Meteo API.

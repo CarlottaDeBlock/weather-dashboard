@@ -1,0 +1,95 @@
+{
+  "app": {
+    "title": "Weerdashboard"
+  },
+  "controls": {
+    "unitLabel": "Temperatuureenheid",
+    "languageLabel": "Taal"
+  },
+  "search": {
+    "label": "Zoek een stad",
+    "placeholder": "Zoek een stad…",
+    "noResults": "Geen steden gevonden voor “{{query}}”."
+  },
+  "favourites": {
+    "heading": "Favorieten",
+    "empty": "Nog geen favoriete steden — zoek hierboven en tik op de ster om er een op te slaan.",
+    "add": "Toevoegen aan favorieten",
+    "added": "Favoriet",
+    "remove": "{{city}} uit favorieten verwijderen"
+  },
+  "current": {
+    "ariaLabel": "Huidig weer voor {{city}}",
+    "updated": "Bijgewerkt {{time}}",
+    "high": "Max: {{value}}",
+    "low": "Min: {{value}}"
+  },
+  "stats": {
+    "feelsLike": "Gevoelstemperatuur",
+    "humidity": "Luchtvochtigheid",
+    "wind": "Wind",
+    "precipitation": "Neerslag",
+    "cloudCover": "Bewolking",
+    "pressure": "Luchtdruk",
+    "uvIndex": "UV-index",
+    "sun": "Zonsopgang / Zonsondergang",
+    "windHint": "{{direction}} · vlagen {{gusts}}"
+  },
+  "forecast": {
+    "ariaLabel": "Meerdaagse verwachting",
+    "nextDays": "Komende dagen",
+    "today": "Vandaag"
+  },
+  "status": {
+    "loading": "Laden",
+    "loadingCity": "Weer voor {{city}} laden",
+    "refreshing": "Vernieuwen"
+  },
+  "errors": {
+    "genericTitle": "Er ging iets mis",
+    "weatherTitle": "Kon het weer niet laden",
+    "retry": "Opnieuw proberen",
+    "network": "Kon de weerservice niet bereiken. Controleer je verbinding.",
+    "server": "De weerservice heeft problemen. Probeer het later opnieuw.",
+    "notFound": "Er zijn geen weergegevens beschikbaar voor deze locatie."
+  },
+  "empty": {
+    "pickTitle": "Kies een stad om te beginnen",
+    "pickMessage": "Zoek hierboven of kies een van je favorieten om de huidige omstandigheden te zien."
+  },
+  "footer": {
+    "dataFrom": "Gegevens van",
+    "builtWith": "Gemaakt met React, Vite & Tailwind CSS."
+  },
+  "wmo": {
+    "unknown": "Onbekend",
+    "0": "Onbewolkt",
+    "1": "Overwegend helder",
+    "2": "Half bewolkt",
+    "3": "Zwaar bewolkt",
+    "45": "Mist",
+    "48": "Aanvriezende mist",
+    "51": "Lichte motregen",
+    "53": "Matige motregen",
+    "55": "Dichte motregen",
+    "56": "Lichte aanvriezende motregen",
+    "57": "Dichte aanvriezende motregen",
+    "61": "Lichte regen",
+    "63": "Matige regen",
+    "65": "Zware regen",
+    "66": "Lichte ijzel",
+    "67": "Zware ijzel",
+    "71": "Lichte sneeuwval",
+    "73": "Matige sneeuwval",
+    "75": "Zware sneeuwval",
+    "77": "Motsneeuw",
+    "80": "Lichte regenbuien",
+    "81": "Matige regenbuien",
+    "82": "Hevige regenbuien",
+    "85": "Lichte sneeuwbuien",
+    "86": "Zware sneeuwbuien",
+    "95": "Onweer",
+    "96": "Onweer met lichte hagel",
+    "99": "Onweer met zware hagel"
+  }
+}

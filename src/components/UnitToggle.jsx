@@ -1,13 +1,15 @@
+import { useTranslation } from 'react-i18next';
 import { useSettings } from '../context/SettingsContext.jsx';
 
 export function UnitToggle() {
   const { unit, setUnit } = useSettings();
+  const { t } = useTranslation();
 
   return (
     <div
       className="inline-flex rounded-full border border-slate-300 bg-white p-1 text-sm font-medium dark:border-slate-700 dark:bg-slate-900"
       role="group"
-      aria-label="Temperature unit"
+      aria-label={t('controls.unitLabel')}
     >
       {[
         { id: 'celsius', label: '°C' },

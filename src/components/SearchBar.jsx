@@ -1,4 +1,5 @@
 import { useEffect, useId, useRef, useState } from 'react';
+import { useTranslation } from 'react-i18next';
 import { useCitySearch } from '../hooks/useCitySearch.js';
 import { formatLocationName } from '../lib/format.js';
 
@@ -8,8 +9,9 @@ export function SearchBar({ onSelect }) {
   const [activeIndex, setActiveIndex] = useState(-1);
   const containerRef = useRef(null);
   const listboxId = useId();
+  const { t } = useTranslation();
 
-  const { status, results, error } = useCitySearch(query);
+  const { status, results, errorCode } = useCitySearch(query);
 
   useEffect(() => setActiveIndex(-1), [results]);
 
@@ -48,7 +50,7 @@ export function SearchBar({ onSelect }) {
   return (
     <div ref={containerRef} className="relative w-full">
       <label htmlFor="city-search" className="sr-only">
-        Search for a city
+        {t('search.label')}
       </label>
       <div className="flex items-center gap-2 rounded-xl border border-slate-300 bg-white px-3 py-2 shadow-sm focus-within:border-sky-400 dark:border-slate-700 dark:bg-slate-900">
         <span aria-hidden="true" className="text-slate-400">
@@ -62,7 +64,7 @@ export function SearchBar({ onSelect }) {
           aria-expanded={showDropdown}
           aria-controls={listboxId}
           aria-activedescendant={activeIndex >= 0 ? `${listboxId}-opt-${activeIndex}` : undefined}
-          placeholder="Search for a city…"
+          placeholder={t('search.placeholder')}
           value={query}
           onChange={(e) => {
             setQuery(e.target.value);
@@ -86,10 +88,14 @@ export function SearchBar({ onSelect }) {
           className="absolute z-20 mt-1 max-h-72 w-full overflow-auto rounded-xl border border-slate-200 bg-white py-1 shadow-lg dark:border-slate-700 dark:bg-slate-900"
         >
           {status === 'error' && (
-            <li className="px-3 py-2 text-sm text-red-600 dark:text-red-400">{error}</li>
+            <li className="px-3 py-2 text-sm text-red-600 dark:text-red-400">
+              {t(`errors.${errorCode}`, { defaultValue: t('errors.network') })}
+            </li>
           )}
           {status === 'empty' && (
-            <li className="px-3 py-2 text-sm text-slate-500">No cities match “{query}”.</li>
+            <li className="px-3 py-2 text-sm text-slate-500">
+              {t('search.noResults', { query })}
+            </li>
           )}
           {results.map((place, i) => (
             <li

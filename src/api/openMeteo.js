@@ -11,10 +11,14 @@ export class ApiError extends Error {
   }
 }
 
-export async function searchCities(query, { count = 6, signal } = {}) {
+// Languages the Open-Meteo geocoding API can localise results into.
+const GEO_LANGUAGES = ['en', 'de', 'fr', 'es', 'it', 'pt', 'ru', 'tr', 'hi'];
+
+export async function searchCities(query, { count = 6, signal, language = 'en' } = {}) {
   const trimmed = query.trim();
   if (!trimmed) return [];
-  const url = `${GEO_URL}?name=${encodeURIComponent(trimmed)}&count=${count}&language=en&format=json`;
+  const lang = GEO_LANGUAGES.includes(language) ? language : 'en';
+  const url = `${GEO_URL}?name=${encodeURIComponent(trimmed)}&count=${count}&language=${lang}&format=json`;
   const data = await getJsonWithSignal(url, signal);
   return (data.results ?? []).map(normalisePlace);
 }

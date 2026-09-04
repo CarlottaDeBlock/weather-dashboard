@@ -1,4 +1,5 @@
-import { useEffect, useState } from 'react';
+import { useEffect } from 'react';
+import { useTranslation } from 'react-i18next';
 import { Header } from './components/Header.jsx';
 import { SearchBar } from './components/SearchBar.jsx';
 import { FavouritesBar } from './components/FavouritesBar.jsx';
@@ -18,8 +19,9 @@ const DEFAULT_PLACE = {
 };
 
 export default function App() {
+  const { t } = useTranslation();
   const { favourites } = useSettings();
-  // Remember the last viewed city across refreshes too.
+  // Remembers last viewed city across refreshes
   const [selectedPlace, setSelectedPlace] = useLocalStorage('weather:lastPlace', null);
 
   // On first load, fall back to a favourite or a sensible default.
@@ -27,7 +29,6 @@ export default function App() {
     if (!selectedPlace) {
       setSelectedPlace(favourites[0] ?? DEFAULT_PLACE);
     }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   return (
@@ -46,7 +47,7 @@ export default function App() {
       </div>
 
       <footer className="pt-4 text-center text-xs text-slate-400">
-        Data from{' '}
+        {t('footer.dataFrom')}{' '}
         <a
           href="https://open-meteo.com/"
           target="_blank"
@@ -55,7 +56,7 @@ export default function App() {
         >
           Open-Meteo
         </a>
-        . Built with React, Vite &amp; Tailwind CSS.
+        . {t('footer.builtWith')}
       </footer>
     </div>
   );

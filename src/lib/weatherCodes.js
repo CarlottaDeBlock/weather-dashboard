@@ -1,37 +1,46 @@
-const CODES = {
-  0: { label: 'Clear sky', day: '☀️', night: '🌙' },
-  1: { label: 'Mainly clear', day: '🌤️', night: '🌙' },
-  2: { label: 'Partly cloudy', day: '⛅', night: '☁️' },
-  3: { label: 'Overcast', day: '☁️', night: '☁️' },
-  45: { label: 'Fog', day: '🌫️', night: '🌫️' },
-  48: { label: 'Depositing rime fog', day: '🌫️', night: '🌫️' },
-  51: { label: 'Light drizzle', day: '🌦️', night: '🌧️' },
-  53: { label: 'Moderate drizzle', day: '🌦️', night: '🌧️' },
-  55: { label: 'Dense drizzle', day: '🌧️', night: '🌧️' },
-  56: { label: 'Light freezing drizzle', day: '🌧️', night: '🌧️' },
-  57: { label: 'Dense freezing drizzle', day: '🌧️', night: '🌧️' },
-  61: { label: 'Slight rain', day: '🌦️', night: '🌧️' },
-  63: { label: 'Moderate rain', day: '🌧️', night: '🌧️' },
-  65: { label: 'Heavy rain', day: '🌧️', night: '🌧️' },
-  66: { label: 'Light freezing rain', day: '🌧️', night: '🌧️' },
-  67: { label: 'Heavy freezing rain', day: '🌧️', night: '🌧️' },
-  71: { label: 'Slight snow', day: '🌨️', night: '🌨️' },
-  73: { label: 'Moderate snow', day: '🌨️', night: '🌨️' },
-  75: { label: 'Heavy snow', day: '❄️', night: '❄️' },
-  77: { label: 'Snow grains', day: '🌨️', night: '🌨️' },
-  80: { label: 'Slight rain showers', day: '🌦️', night: '🌧️' },
-  81: { label: 'Moderate rain showers', day: '🌧️', night: '🌧️' },
-  82: { label: 'Violent rain showers', day: '⛈️', night: '⛈️' },
-  85: { label: 'Slight snow showers', day: '🌨️', night: '🌨️' },
-  86: { label: 'Heavy snow showers', day: '❄️', night: '❄️' },
-  95: { label: 'Thunderstorm', day: '⛈️', night: '⛈️' },
-  96: { label: 'Thunderstorm with slight hail', day: '⛈️', night: '⛈️' },
-  99: { label: 'Thunderstorm with heavy hail', day: '⛈️', night: '⛈️' },
+// WMO weather interpretation codes (used by Open-Meteo) -> emoji icon.
+// The human-readable labels live in the i18n dictionaries under `wmo.<code>`
+// so they can be translated; this module only owns the icon mapping.
+
+const ICONS = {
+  0: { day: '☀️', night: '🌙' },
+  1: { day: '🌤️', night: '🌙' },
+  2: { day: '⛅', night: '☁️' },
+  3: { day: '☁️', night: '☁️' },
+  45: { day: '🌫️', night: '🌫️' },
+  48: { day: '🌫️', night: '🌫️' },
+  51: { day: '🌦️', night: '🌧️' },
+  53: { day: '🌦️', night: '🌧️' },
+  55: { day: '🌧️', night: '🌧️' },
+  56: { day: '🌧️', night: '🌧️' },
+  57: { day: '🌧️', night: '🌧️' },
+  61: { day: '🌦️', night: '🌧️' },
+  63: { day: '🌧️', night: '🌧️' },
+  65: { day: '🌧️', night: '🌧️' },
+  66: { day: '🌧️', night: '🌧️' },
+  67: { day: '🌧️', night: '🌧️' },
+  71: { day: '🌨️', night: '🌨️' },
+  73: { day: '🌨️', night: '🌨️' },
+  75: { day: '❄️', night: '❄️' },
+  77: { day: '🌨️', night: '🌨️' },
+  80: { day: '🌦️', night: '🌧️' },
+  81: { day: '🌧️', night: '🌧️' },
+  82: { day: '⛈️', night: '⛈️' },
+  85: { day: '🌨️', night: '🌨️' },
+  86: { day: '❄️', night: '❄️' },
+  95: { day: '⛈️', night: '⛈️' },
+  96: { day: '⛈️', night: '⛈️' },
+  99: { day: '⛈️', night: '⛈️' },
 };
 
-const FALLBACK = { label: 'Unknown', day: '❓', night: '❓' };
+/** Emoji for a weather code, day/night aware. */
+export function weatherIcon(code, isDay = true) {
+  const entry = ICONS[code];
+  if (!entry) return '❓';
+  return isDay ? entry.day : entry.night;
+}
 
-export function describeWeather(code, isDay = true) {
-  const entry = CODES[code] ?? FALLBACK;
-  return { label: entry.label, icon: isDay ? entry.day : entry.night };
+/** i18n key for a weather code's label (falls back to `wmo.unknown`). */
+export function weatherLabelKey(code) {
+  return ICONS[code] ? `wmo.${code}` : 'wmo.unknown';
 }

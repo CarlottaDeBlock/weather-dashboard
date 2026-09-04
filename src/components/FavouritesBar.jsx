@@ -1,21 +1,23 @@
+import { useTranslation } from 'react-i18next';
 import { useSettings, favouriteKey } from '../context/SettingsContext.jsx';
 import { formatLocationName } from '../lib/format.js';
 
 export function FavouritesBar({ selectedPlace, onSelect }) {
   const { favourites, removeFavourite } = useSettings();
+  const { t } = useTranslation();
 
   return (
-    <section aria-label="Favourite cities" className="space-y-2">
+    <section aria-label={t('favourites.heading')} className="space-y-2">
       <h2 className="flex items-center gap-1.5 text-sm font-semibold uppercase tracking-wide text-slate-500 dark:text-slate-400">
         <span className="text-amber-500" aria-hidden="true">
           ★
         </span>
-        Favourites
+        {t('favourites.heading')}
       </h2>
 
       {favourites.length === 0 ? (
         <p className="rounded-xl border border-dashed border-slate-300 px-3 py-3 text-sm text-slate-500 dark:border-slate-700 dark:text-slate-400">
-          No favourite cities yet — search above and tap the star to save one.
+          {t('favourites.empty')}
         </p>
       ) : (
         <ul className="grid grid-cols-1 gap-2 sm:grid-cols-2 lg:grid-cols-1">
@@ -53,7 +55,7 @@ export function FavouritesBar({ selectedPlace, onSelect }) {
                 <button
                   type="button"
                   onClick={() => removeFavourite(place)}
-                  aria-label={`Remove ${formatLocationName(place)} from favourites`}
+                  aria-label={t('favourites.remove', { city: formatLocationName(place) })}
                   className="absolute right-2 top-1/2 -translate-y-1/2 rounded-full p-1 text-slate-400 opacity-100 transition hover:bg-slate-100 hover:text-red-500 focus-visible:opacity-100 dark:hover:bg-slate-800 sm:opacity-0 sm:group-hover:opacity-100"
                 >
                   <span aria-hidden="true">✕</span>

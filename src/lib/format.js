@@ -1,6 +1,9 @@
-// The UI copy is in English, so keep dates/times in English too rather
-// than following the visitor's OS locale (which gave Dutch weekday names).
-const LOCALE = 'en-GB';
+import i18n from '../i18n/config.js';
+
+// Date/time strings follow the active UI language (weekday names, AM/PM…).
+function activeLocale() {
+  return i18n.resolvedLanguage || i18n.language || 'en';
+}
 
 export function cToF(celsius) {
   return (celsius * 9) / 5 + 32;
@@ -28,7 +31,7 @@ export function windDirection(degrees) {
 export function formatTime(iso, timezone) {
   if (!iso) return '--';
   try {
-    return new Date(iso).toLocaleTimeString(LOCALE, {
+    return new Date(iso).toLocaleTimeString(activeLocale(), {
       hour: '2-digit',
       minute: '2-digit',
       timeZone: timezone || undefined,
@@ -40,7 +43,7 @@ export function formatTime(iso, timezone) {
 
 export function formatDay(iso) {
   if (!iso) return '';
-  return new Date(iso).toLocaleDateString(LOCALE, { weekday: 'short' });
+  return new Date(iso).toLocaleDateString(activeLocale(), { weekday: 'short' });
 }
 
 export function formatLocationName(place) {

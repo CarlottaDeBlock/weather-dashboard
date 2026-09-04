@@ -1,0 +1,95 @@
+{
+  "app": {
+    "title": "Wetter-Dashboard"
+  },
+  "controls": {
+    "unitLabel": "Temperatureinheit",
+    "languageLabel": "Sprache"
+  },
+  "search": {
+    "label": "Stadt suchen",
+    "placeholder": "Stadt suchen…",
+    "noResults": "Keine Städte gefunden für „{{query}}“."
+  },
+  "favourites": {
+    "heading": "Favoriten",
+    "empty": "Noch keine Lieblingsstädte — oben suchen und auf den Stern tippen, um eine zu speichern.",
+    "add": "Zu Favoriten hinzufügen",
+    "added": "Favorit",
+    "remove": "{{city}} aus Favoriten entfernen"
+  },
+  "current": {
+    "ariaLabel": "Aktuelles Wetter für {{city}}",
+    "updated": "Aktualisiert {{time}}",
+    "high": "Max.: {{value}}",
+    "low": "Min.: {{value}}"
+  },
+  "stats": {
+    "feelsLike": "Gefühlt",
+    "humidity": "Luftfeuchtigkeit",
+    "wind": "Wind",
+    "precipitation": "Niederschlag",
+    "cloudCover": "Bewölkung",
+    "pressure": "Luftdruck",
+    "uvIndex": "UV-Index",
+    "sun": "Sonnenaufgang / Sonnenuntergang",
+    "windHint": "{{direction}} · Böen {{gusts}}"
+  },
+  "forecast": {
+    "ariaLabel": "Mehrtagesvorhersage",
+    "nextDays": "Nächste Tage",
+    "today": "Heute"
+  },
+  "status": {
+    "loading": "Wird geladen",
+    "loadingCity": "Wetter für {{city}} wird geladen",
+    "refreshing": "Wird aktualisiert"
+  },
+  "errors": {
+    "genericTitle": "Etwas ist schiefgelaufen",
+    "weatherTitle": "Wetter konnte nicht geladen werden",
+    "retry": "Erneut versuchen",
+    "network": "Der Wetterdienst ist nicht erreichbar. Bitte Verbindung prüfen.",
+    "server": "Der Wetterdienst hat Probleme. Bitte später erneut versuchen.",
+    "notFound": "Für diesen Ort sind keine Wetterdaten verfügbar."
+  },
+  "empty": {
+    "pickTitle": "Wähle eine Stadt, um zu starten",
+    "pickMessage": "Suche oben oder wähle einen deiner Favoriten, um die aktuellen Bedingungen zu sehen."
+  },
+  "footer": {
+    "dataFrom": "Daten von",
+    "builtWith": "Erstellt mit React, Vite & Tailwind CSS."
+  },
+  "wmo": {
+    "unknown": "Unbekannt",
+    "0": "Klarer Himmel",
+    "1": "Überwiegend klar",
+    "2": "Teilweise bewölkt",
+    "3": "Bedeckt",
+    "45": "Nebel",
+    "48": "Gefrierender Nebel",
+    "51": "Leichter Nieselregen",
+    "53": "Mäßiger Nieselregen",
+    "55": "Starker Nieselregen",
+    "56": "Leichter gefrierender Nieselregen",
+    "57": "Starker gefrierender Nieselregen",
+    "61": "Leichter Regen",
+    "63": "Mäßiger Regen",
+    "65": "Starker Regen",
+    "66": "Leichter gefrierender Regen",
+    "67": "Starker gefrierender Regen",
+    "71": "Leichter Schneefall",
+    "73": "Mäßiger Schneefall",
+    "75": "Starker Schneefall",
+    "77": "Schneegriesel",
+    "80": "Leichte Regenschauer",
+    "81": "Mäßige Regenschauer",
+    "82": "Heftige Regenschauer",
+    "85": "Leichte Schneeschauer",
+    "86": "Starke Schneeschauer",
+    "95": "Gewitter",
+    "96": "Gewitter mit leichtem Hagel",
+    "99": "Gewitter mit starkem Hagel"
+  }
+}

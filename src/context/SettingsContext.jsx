@@ -1,12 +1,6 @@
 import { createContext, useCallback, useContext, useMemo } from 'react';
 import { useLocalStorage } from '../hooks/useLocalStorage.js';
 
-/**
- * App-wide settings that must persist across refreshes:
- *  - the temperature unit ('celsius' | 'fahrenheit')
- *  - the list of favourite cities
- * Both are backed by localStorage via useLocalStorage.
- */
 const SettingsContext = createContext(null);
 
 const UNIT_KEY = 'weather:unit';

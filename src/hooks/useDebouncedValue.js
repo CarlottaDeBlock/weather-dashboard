@@ -1,6 +1,5 @@
 import { useEffect, useState } from 'react';
 
-/** Returns `value` after it has stopped changing for `delay` ms. */
 export function useDebouncedValue(value, delay = 350) {
   const [debounced, setDebounced] = useState(value);
 

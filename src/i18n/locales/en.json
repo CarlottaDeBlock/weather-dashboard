@@ -1,0 +1,95 @@
+{
+  "app": {
+    "title": "Weather Dashboard"
+  },
+  "controls": {
+    "unitLabel": "Temperature unit",
+    "languageLabel": "Language"
+  },
+  "search": {
+    "label": "Search for a city",
+    "placeholder": "Search for a city…",
+    "noResults": "No cities match “{{query}}”."
+  },
+  "favourites": {
+    "heading": "Favourites",
+    "empty": "No favourite cities yet — search above and tap the star to save one.",
+    "add": "Add to favourites",
+    "added": "Favourited",
+    "remove": "Remove {{city}} from favourites"
+  },
+  "current": {
+    "ariaLabel": "Current weather for {{city}}",
+    "updated": "Updated {{time}}",
+    "high": "H: {{value}}",
+    "low": "L: {{value}}"
+  },
+  "stats": {
+    "feelsLike": "Feels like",
+    "humidity": "Humidity",
+    "wind": "Wind",
+    "precipitation": "Precipitation",
+    "cloudCover": "Cloud cover",
+    "pressure": "Pressure",
+    "uvIndex": "UV index",
+    "sun": "Sunrise / Sunset",
+    "windHint": "{{direction}} · gusts {{gusts}}"
+  },
+  "forecast": {
+    "ariaLabel": "Multi-day forecast",
+    "nextDays": "Next days",
+    "today": "Today"
+  },
+  "status": {
+    "loading": "Loading",
+    "loadingCity": "Loading weather for {{city}}",
+    "refreshing": "Refreshing"
+  },
+  "errors": {
+    "genericTitle": "Something went wrong",
+    "weatherTitle": "Couldn’t load the weather",
+    "retry": "Try again",
+    "network": "Could not reach the weather service. Check your connection.",
+    "server": "The weather service is having problems. Please try again later.",
+    "notFound": "No weather data is available for this location."
+  },
+  "empty": {
+    "pickTitle": "Pick a city to get started",
+    "pickMessage": "Search above or choose one of your favourites to see the current conditions."
+  },
+  "footer": {
+    "dataFrom": "Data from",
+    "builtWith": "Built with React, Vite & Tailwind CSS."
+  },
+  "wmo": {
+    "unknown": "Unknown",
+    "0": "Clear sky",
+    "1": "Mainly clear",
+    "2": "Partly cloudy",
+    "3": "Overcast",
+    "45": "Fog",
+    "48": "Depositing rime fog",
+    "51": "Light drizzle",
+    "53": "Moderate drizzle",
+    "55": "Dense drizzle",
+    "56": "Light freezing drizzle",
+    "57": "Dense freezing drizzle",
+    "61": "Slight rain",
+    "63": "Moderate rain",
+    "65": "Heavy rain",
+    "66": "Light freezing rain",
+    "67": "Heavy freezing rain",
+    "71": "Slight snowfall",
+    "73": "Moderate snowfall",
+    "75": "Heavy snowfall",
+    "77": "Snow grains",
+    "80": "Slight rain showers",
+    "81": "Moderate rain showers",
+    "82": "Violent rain showers",
+    "85": "Slight snow showers",
+    "86": "Heavy snow showers",
+    "95": "Thunderstorm",
+    "96": "Thunderstorm with slight hail",
+    "99": "Thunderstorm with heavy hail"
+  }
+}

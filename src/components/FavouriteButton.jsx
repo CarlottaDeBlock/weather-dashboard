@@ -1,7 +1,9 @@
+import { useTranslation } from 'react-i18next';
 import { useSettings } from '../context/SettingsContext.jsx';
 
 export function FavouriteButton({ place, variant = 'default' }) {
   const { isFavourite, toggleFavourite } = useSettings();
+  const { t } = useTranslation();
   const active = isFavourite(place);
 
   const base =
@@ -23,7 +25,7 @@ export function FavouriteButton({ place, variant = 'default' }) {
       className={`${base} ${styles}`}
     >
       <span aria-hidden="true">{active ? '★' : '☆'}</span>
-      {active ? 'Favourited' : 'Add to favourites'}
+      {active ? t('favourites.added') : t('favourites.add')}
     </button>
   );
 }
