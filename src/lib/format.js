@@ -1,6 +1,5 @@
 import i18n from '../i18n/config.js';
 
-// Date/time strings follow the active UI language (weekday names, AM/PM…).
 function activeLocale() {
   return i18n.resolvedLanguage || i18n.language || 'en';
 }

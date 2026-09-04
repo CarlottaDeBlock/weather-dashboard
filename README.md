@@ -86,20 +86,12 @@ src/
 └── main.jsx                  # entry, wraps app in SettingsProvider
 ```
 
-### Design notes
+## AI use
 
-- **Separation of concerns**: network code lives in `api/`, cross-cutting state
-  in `context/`, reusable logic in `hooks/`, pure helpers in `lib/`, and the UI
-  is composed from presentational components. `App.jsx` only wires things
-  together and holds the "which city is selected" state.
-- **Unit handling**: all data is fetched in metric units and converted in
-  `lib/format.js`. The toggle is instant and offline-safe.
-- **State ownership**: `WeatherPanel` owns the fetch for the current place;
-  `SettingsContext` owns unit + favourites; `i18n` owns the language (persisted
-  by `i18next-browser-languagedetector`).
-- **i18n**: components read copy with the `useTranslation` hook; weather-code
-  labels are keyed by code in the dictionaries; API errors carry a `code` that
-  maps to a translated message.
+- **Icons**: Claude attached different icons to the different categories of weather
+- **i18n**: All the translations were done by claude.
+- **API**: Making the connection with OpenMeteo was with the help of claude.
+- **documentation**: Organising the README.md was with the help of claude.
 
 ## Tech
 

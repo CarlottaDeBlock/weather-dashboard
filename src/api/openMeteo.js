@@ -11,7 +11,6 @@ export class ApiError extends Error {
   }
 }
 
-// Languages the Open-Meteo geocoding API can localise results into.
 const GEO_LANGUAGES = ['en', 'de', 'fr', 'es', 'it', 'pt', 'ru', 'tr', 'hi'];
 
 export async function searchCities(query, { count = 6, signal, language = 'en' } = {}) {

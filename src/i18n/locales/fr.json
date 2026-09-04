@@ -13,7 +13,7 @@
   },
   "favourites": {
     "heading": "Favoris",
-    "empty": "Aucune ville favorite pour l’instant — recherchez ci-dessus et touchez l’étoile pour en enregistrer une.",
+    "empty": "Aucune ville favorite pour l'instant — recherchez ci-dessus et touchez l'étoile pour en enregistrer une.",
     "add": "Ajouter aux favoris",
     "added": "En favori",
     "remove": "Retirer {{city}} des favoris"
@@ -38,7 +38,7 @@
   "forecast": {
     "ariaLabel": "Prévisions sur plusieurs jours",
     "nextDays": "Prochains jours",
-    "today": "Aujourd’hui"
+    "today": "Aujourd'hui"
   },
   "status": {
     "loading": "Chargement",
@@ -51,11 +51,11 @@
     "retry": "Réessayer",
     "network": "Impossible de joindre le service météo. Vérifiez votre connexion.",
     "server": "Le service météo rencontre des problèmes. Réessayez plus tard.",
-    "notFound": "Aucune donnée météo n’est disponible pour ce lieu."
+    "notFound": "Aucune donnée météo n'est disponible pour ce lieu."
   },
   "empty": {
     "pickTitle": "Choisissez une ville pour commencer",
-    "pickMessage": "Recherchez ci-dessus ou choisissez l’un de vos favoris pour voir les conditions actuelles."
+    "pickMessage": "Recherchez ci-dessus ou choisissez l'un de vos favoris pour voir les conditions actuelles."
   },
   "footer": {
     "dataFrom": "Données de",

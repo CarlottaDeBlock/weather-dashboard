@@ -14,7 +14,6 @@ export const SUPPORTED_LANGUAGES = [
   { code: 'de', label: 'Deutsch' },
 ];
 
-// Persist the chosen language across refreshes, same as the unit toggle.
 export const LANGUAGE_STORAGE_KEY = 'weather:lang';
 
 i18n
@@ -38,7 +37,6 @@ i18n
     },
   });
 
-// Keep <html lang> in sync for accessibility and correct hyphenation.
 function syncHtmlLang(lng) {
   document.documentElement.setAttribute('lang', lng);
 }

@@ -1,5 +1,3 @@
-/** Presentational loading / error / empty states. All copy comes in as props. */
-
 export function Spinner({ label }) {
   return (
     <div

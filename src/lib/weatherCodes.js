@@ -1,7 +1,3 @@
-// WMO weather interpretation codes (used by Open-Meteo) -> emoji icon.
-// The human-readable labels live in the i18n dictionaries under `wmo.<code>`
-// so they can be translated; this module only owns the icon mapping.
-
 const ICONS = {
   0: { day: '☀️', night: '🌙' },
   1: { day: '🌤️', night: '🌙' },
@@ -33,14 +29,12 @@ const ICONS = {
   99: { day: '⛈️', night: '⛈️' },
 };
 
-/** Emoji for a weather code, day/night aware. */
 export function weatherIcon(code, isDay = true) {
   const entry = ICONS[code];
   if (!entry) return '❓';
   return isDay ? entry.day : entry.night;
 }
 
-/** i18n key for a weather code's label (falls back to `wmo.unknown`). */
 export function weatherLabelKey(code) {
   return ICONS[code] ? `wmo.${code}` : 'wmo.unknown';
 }

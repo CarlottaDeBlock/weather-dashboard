@@ -1,7 +1,6 @@
 import { useTranslation } from 'react-i18next';
 import { SUPPORTED_LANGUAGES } from '../i18n/config.js';
 
-/** Dropdown to switch the UI language. The choice is persisted by i18next. */
 export function LanguageSwitcher() {
   const { i18n, t } = useTranslation();
   const current = i18n.resolvedLanguage || i18n.language || 'en';
